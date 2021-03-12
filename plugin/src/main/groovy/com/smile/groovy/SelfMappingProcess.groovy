@@ -33,7 +33,7 @@ class SelfMappingProcess implements MappingProcessor {
     void finish() {
         printWriter.println('# this is mapping keeper print end --')
         printWriter.println()
-        printWriter?.flush()
-        printWriter?.close()
+        printWriter.flush()
+        printWriter.close()
     }
 }
