@@ -1,0 +1,61 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+version = VERSION_NAME
+group = GROUP
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
+artifacts {
+    archives sourcesJar
+}
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name 'mapping keeper'
+                url POM_URL
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'Smile'
+                        name 'Smile'
+                        email 'lijianhy1990@gmail.com'
+                    }
+                }
+                scm {
+                    connection POM_URL
+                    developerConnection POM_URL
+                    url POM_URL
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = POM_ARTIFACT_ID
+        websiteUrl = POM_URL
+        vcsUrl = POM_URL
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}

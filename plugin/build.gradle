@@ -1,4 +1,5 @@
 apply plugin: 'groovy'
+apply from:'../jcenter.gradle'
 compileGroovy {
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
