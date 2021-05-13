@@ -7,5 +7,5 @@ compileGroovy {
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
-    implementation 'com.android.tools.build:gradle:3.6.4'
+    implementation 'com.android.tools.build:gradle:3.5.0'
 }

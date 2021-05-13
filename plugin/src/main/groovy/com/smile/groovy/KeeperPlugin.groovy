@@ -32,7 +32,7 @@ class KeeperPlugin implements Plugin<Project> {
                     }
                     // todo need to adapt other gradle version
                     def mergeProguardFile = mergeFileTask.get().outputs.files.singleFile
-                    def mappingFile = variant.getMappingFileProvider().get().singleFile
+                    def mappingFile = variant.getMappingFile()
 
                     def mappingReader = new MappingReader(mappingFile)
                     def mappingProcess = new SelfMappingProcess(mergeProguardFile)
